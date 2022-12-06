@@ -15,11 +15,11 @@ from bs4 import  NavigableString
 from bs4 import  Tag
 
 def scan_url_return_soup(url):
-    source_code = requests.get(url)
-    plain_text = source_code.text
+    source_code = multiprocessing.get(url)
+    plain_text = multiprocessing.text
     soup = BeautifulSoup(plain_text, 'html.parser')
     return soup
-
+    
 def get_tuple_country_link(oject):
     all_coins = oject.findAll("ul", {"class": "liste_pays"})[0]
     list1 = all_coins.findChildren("li", recursive=False)
@@ -209,7 +209,11 @@ def extract_info_and_create_coin(soup_str, country):
         urllib.request.urlretrieve(revers[0], coin_folder + '\\revers.png')
 
 
-
+def scan_url_return_soup2(url):
+    source_code = multiprocessing.get(url)
+    plain_text = multiprocessing.text
+    soup = BeautifulSoup(plain_text, 'html.parser')
+    return soup
 
 
 if __name__ == '__main__':
@@ -227,3 +231,7 @@ if __name__ == '__main__':
     # aa = p.map(fooo, countries[240:-2])
     y= time.time()
     print(y-x)
+
+    
+
+
